@@ -1,0 +1,142 @@
+% Based on AltaCV by LianTze Lim, distributed under the LaTeX Project Public License.
+% Template: https://www.overleaf.com/latex/templates/altacv-template/trgqjpwnmtgv
+\documentclass[10pt,a4paper,withhyper,normalphoto]{altacv}
+
+\geometry{left=1.35cm,right=1.35cm,top=1.15cm,bottom=1.2cm,columnsep=0.85cm}
+\usepackage{paracol}
+\usepackage{lmodern}
+\renewcommand{\familydefault}{\sfdefault}
+
+\definecolor{CVNavy}{HTML}{183451}
+\definecolor{CVTeal}{HTML}{17666E}
+\definecolor{CVText}{HTML}{303942}
+\definecolor{CVRule}{HTML}{A9C8CC}
+\colorlet{name}{CVNavy}
+\colorlet{tagline}{CVTeal}
+\colorlet{heading}{CVNavy}
+\colorlet{headingrule}{CVRule}
+\colorlet{subheading}{CVTeal}
+\colorlet{accent}{CVTeal}
+\colorlet{emphasis}{CVText}
+\colorlet{body}{CVText}
+\renewcommand{\cvsectionfont}{\Large\bfseries}
+\renewcommand{\cvItemMarker}{\small\textbullet}
+
+\begin{document}
+
+\name{Junxiang Yang}
+\tagline{Master's Student in Electronic Information \textbar{} Shanghai University}
+\photoR{2.25cm}{img/avatar.jpg}
+\personalinfo{%
+  \email{1505978398@qq.com}
+  \phone{+86 158 7451 0840}
+  \github{YumemoeNova}
+}
+\makecvheader
+
+\columnratio{0.68}
+\begin{paracol}{2}
+
+\cvsection{Education}
+
+\cvevent{Master's in Electronic Information (in progress)}
+  {Shanghai University \textbar{} UTSEUS}{Sep 2026 -- Present}{}
+Expected graduation in March 2029. Research in Cyber-Physical Systems (CPS)
+under Jinxin Du. Ranked 2nd out of 20 in the overall UTSEUS master's admissions ranking.
+
+\divider
+
+\cvevent{Bachelor's in Measurement and Control Technology and Instrumentation}
+  {North China Electric Power University}{Sep 2020 -- Jun 2024}{Baoding}
+
+\cvsection{Engineering Projects}
+
+\cvevent{3D Power Plant Process Visualization}{Personal Demo}{}{}
+\begin{itemize}
+  \item Built a simplified power plant scene in Unity and implemented basic air supply,
+    flue-gas oxygen, and related control logic in C\#.
+  \item Linked simulated parameters to status displays, fan rotation, flame effects,
+    and water-wall color changes.
+\end{itemize}
+
+\divider
+
+\cvevent{Air Supply and Oxygen Control Simulation}{300 MW Unit}{Aug -- Sep 2023}{}
+\begin{itemize}
+  \item Designed and configured a process control scheme on the university's
+    CPS configuration and simulation platform.
+  \item Tuned controller parameters and evaluated the simulated flue-gas oxygen
+    step response to improve dynamic performance.
+\end{itemize}
+
+\divider
+
+\cvevent{Capacitive Wire Mesh Imaging Hardware Design}
+  {Undergraduate Thesis}{Sep 2023 -- Jun 2024}{}
+\begin{itemize}
+  \item Designed schematics for a \(24 \times 24\) capacitive signal acquisition system
+    for industrial multiphase flow measurement using an STC89C52 microcontroller.
+  \item Planned array scanning, signal conditioning, and A/D conversion, and completed
+    the hardware and circuit design.
+\end{itemize}
+
+\cvsection{Professional Experience}
+
+\cvevent{Plant Operations Trainee}{Zhuhai SEZ Guangzhu Power Generation Co., Ltd.}
+  {Jul 2024 -- May 2025}{}
+\begin{itemize}
+  \item Inspected generating units, tracked operating parameters, and performed
+    auxiliary switching, system drainage, and routine equipment checks.
+  \item Supported isolation during startup, shutdown, and maintenance, checked on-site
+    control-loop logic, and helped troubleshoot sensors and actuators.
+\end{itemize}
+
+\switchcolumn
+
+\cvsection{Profile}
+
+CPS master's student with a background in measurement and control, power plant
+operations, and Unity 3D visualization. Independently studying computer graphics and
+machine learning, with career interests in digital twins and rendering engines.
+
+\smallskip
+\textbf{Preferred university} UTC
+
+\cvsection{Skills and Study}
+
+\textbf{Programming fundamentals}\par
+C/C++, Python
+
+\smallskip
+\textbf{Engineering and graphics}\par
+MATLAB, AutoCAD, Proteus, PLCs, Blender, Unity
+
+\smallskip
+\textbf{Independent study}\par
+GAMES101 (computer graphics)\par
+CS229 (machine learning)
+
+\cvsection{Languages}
+
+Chinese (native)\par
+English (CET-4)\par
+French (currently studying)
+
+\cvsection{Leadership}
+
+\cvevent{Vice President}{UTSEUS Graduate Student Union}{Present}{}
+
+\divider
+
+\cvevent{Head of Sports Department}
+  {Departmental Student Union, NCEPU}{Sep 2021 -- Jun 2022}{}
+
+\cvsection{Other Details}
+
+\textbf{Born} March 2003\par
+\href{https://x.com/Nova250720}{X @Nova250720}\par
+\textbf{QQ} 1505978398\par
+\href{https://space.bilibili.com/172457711}{Bilibili YumemoeNova}
+
+\end{paracol}
+\end{document}

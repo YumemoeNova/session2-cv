@@ -1,0 +1,61 @@
+name: Build LaTeX CV
+
+on:
+  push:
+    branches: [main, master]
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    concurrency:
+      group: cv-release
+      queue: max
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Compile CV
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+          texlive_version: '2026'
+
+      - name: Update the release branch
+        shell: bash
+        run: |
+          test -s main.pdf
+          git config user.name "GitHub Actions"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          release_dir="$RUNNER_TEMP/cv-release"
+          if git show-ref --verify --quiet refs/remotes/origin/release; then
+            git worktree add --detach "$release_dir" refs/remotes/origin/release
+          else
+            git worktree add --detach "$release_dir" HEAD
+            git -C "$release_dir" switch --orphan cv-pdf
+          fi
+
+          cp main.pdf "$release_dir/main.pdf"
+          git -C "$release_dir" add main.pdf
+          if ! git -C "$release_dir" diff --cached --quiet; then
+            git -C "$release_dir" commit -m "Update CV PDF for v$GITHUB_RUN_NUMBER"
+            git -C "$release_dir" push origin HEAD:refs/heads/release
+          fi
+
+      - name: Publish PDF on GitHub Releases
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          tag="v$GITHUB_RUN_NUMBER"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release upload "$tag" main.pdf --clobber
+          else
+            gh release create "$tag" main.pdf --target "$GITHUB_SHA" \
+              --title "Release $tag" --notes "Automated CV PDF build."
+          fi
